@@ -17,6 +17,7 @@ Alternatively as a git submodule:
 
 ## Models
 Add `multi_tenant_model` to the primary model
+
     class Account < ActiveRecord::Base
       multi_tenant_model
       has_many :properties
@@ -37,6 +38,7 @@ Property scoping will behave as normal unless a current account has been set:
     #> [#<Property account_id: 1>]
 
 If the current account is set, instantiating new property records will automatically be assigned to the current account:
+
     Property.new
     #> <Property account_id: nil>
     
@@ -46,6 +48,7 @@ If the current account is set, instantiating new property records will automatic
 
 ## Controller
 If you want to have subdomained instances of the application:
+
     class ApplicationController < ActionController::Base
       subdomain_by_multi_tenant_model :account
     end
