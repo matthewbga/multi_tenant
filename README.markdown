@@ -23,11 +23,13 @@ Add `multi_tenant_model` to the primary model
     end
 
 Any models that should be explicitly scoped to a `multi_tenant_model` require the `belongs_to_tenant` to be set
+    
     class Property < ActiveRecord::Base
       belongs_to_tenant :account
     end
 
 Property scoping will behave as normal unless a current account has been set:
+    
     Property.all
     #> [#<Property account_id: 1>, #<Property account_id: 2>]
     Account.current = Account.find(1)
